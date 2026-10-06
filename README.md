@@ -36,4 +36,4 @@ Optou-se por um **Web App Responsivo (PWA)** dividida em duas frentes de uso:
 ## ✒️ Autor
 
 - **Docente:** Prof. Sedenilso Antonio Machado
-- **Aluno:** [Seu Nome Aqui]
+- **Aluno:** Hemanuel Rulyo Dos Santos Antunes
