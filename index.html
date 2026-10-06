@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panificadora & Empório Dona Clara</title>
+  <style>
+    :root {
+      --primary: #8b5a2b;
+      --bg: #fdfaf6;
+      --card-bg: #ffffff;
+      --text: #333;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      border: 1px solid #eee;
+    }
+    h2 { color: var(--primary); margin-top: 0; }
+    label { display: block; margin-top: 0.8rem; font-weight: bold; }
+    input, select, button {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    button:hover { opacity: 0.9; }
+    ul { list-style: none; padding: 0; }
+    li {
+      background: #f4efe9;
+      margin-bottom: 0.5rem;
+      padding: 0.8rem;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🍞 Panificadora & Empório Dona Clara</h1>
+    <p>Pães artesanais de fermentação natural & Encomendas para Eventos</p>
+  </header>
+
+  <main class="grid">
+    <!-- Visão do Cliente -->
+    <section class="card">
+      <h2>🥐 Fazer Encomenda / Reserva</h2>
+      <form id="orderForm">
+        <label for="name">Nome do Cliente:</label>
+        <input type="text" id="name" required placeholder="Ex: Maria Silva">
+
+        <label for="product">Produto / Categoria:</label>
+        <select id="product">
+          <option value="Pão de Fermentação Natural (Retirada)">Pão de Fermentação Natural (Retirada)</option>
+          <option value="Tábua de Frios Colonial (Evento)">Tábua de Frios Colonial (Evento)</option>
+          <option value="Bolo Artesanal para Aniversário">Bolo Artesanal para Aniversário</option>
+          <option value="Kit Coffee Break Empório">Kit Coffee Break Empório</option>
+        </select>
+
+        <label for="time">Horário/Data para Retirada:</label>
+        <input type="text" id="time" required placeholder="Ex: Hoje às 17h00">
+
+        <button type="submit">Enviar Pedido para Cozinha</button>
+      </form>
+    </section>
+
+    <!-- Visão da Cozinha/Gestão -->
+    <section class="card">
+      <h2>👨‍🍳 Painel da Cozinha (Tempo Real)</h2>
+      <p><small>Substitui o caderno impresso e evita erros de horários e sabores.</small></p>
+      <ul id="orderList">
+        <li><strong>Ana Clara:</strong> 2x Pães de Fermentação (Horário: 08:30) - <em>Pronto</em></li>
+        <li><strong>Empresa Tech:</strong> Kit Coffee Break 20 pessoas (Horário: 15:00) - <em>Em preparo</em></li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const product = document.getElementById('product').value;
+      const time = document.getElementById('time').value;
+
+      const ul = document.getElementById('orderList');
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${name}:</strong> ${product} (Horário: ${time}) - <em>Pendente</em>`;
+      ul.appendChild(li);
+
+      this.reset();
+      alert('Pedido enviado com sucesso para a cozinha da Dona Clara!');
+    });
+  </script>
+</body>
+</html>
